@@ -11,7 +11,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2557.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2557.robot.commands.FindAcceleration;
 import org.usfirst.frc.team2557.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team2557.robot.subsystems.GetLocationTrue;
 import org.usfirst.frc.team2557.robot.subsystems.NavX;
+import org.usfirst.frc.team2557.robot.commands.InterpretAcceleration;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,11 +26,13 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
+	public static GetLocationTrue getLocationTrue;
 	public static NavX navX;
 
 
 	Command autonomousCommand;
 	Command FindAcceleration;
+	Command InterpretAcceleration;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
@@ -39,9 +43,11 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		RobotMap.init();
 		oi = new OI();
+		getLocationTrue = new GetLocationTrue();
 		navX = new NavX();
 		
 		FindAcceleration = new FindAcceleration();
+		InterpretAcceleration = new InterpretAcceleration();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
@@ -112,7 +118,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		
 		FindAcceleration.start();
+		InterpretAcceleration.start();
 		Scheduler.getInstance().run();
 	}
 

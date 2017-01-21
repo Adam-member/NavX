@@ -3,6 +3,7 @@ package org.usfirst.frc.team2557.robot;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.Timer;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -15,11 +16,16 @@ public class RobotMap {
 	
 	public static float accelX;
 	public static float accelY;
+
+	public static double[] aDistance;
+	
+	public static Timer time;
 	
 	
 	
 	public static void init(){
 		ahrs = new AHRS(SPI.Port.kMXP);
+		time = new Timer();
 	}
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
