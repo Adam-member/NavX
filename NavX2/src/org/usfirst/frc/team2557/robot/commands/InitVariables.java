@@ -7,10 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class InterpretAcceleration extends Command {
+public class InitVariables extends Command {
 
-    public InterpretAcceleration() {
-    	requires(Robot.navX);
+    public InitVariables() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -20,8 +19,8 @@ public class InterpretAcceleration extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute(){
-    	Robot.getLocationTrue.getLocationTrue();
+    protected void execute() {
+    	Robot.getLocationTrue.initVariables();
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -26,6 +26,8 @@ public class RobotMap {
 	public static void init(){
 		ahrs = new AHRS(SPI.Port.kMXP);
 		time = new Timer();
+		
+		aDistance = new double[2];
 	}
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.

@@ -26,14 +26,7 @@ public class GetLocationTrue extends Subsystem {
 
 	public void getLocationTrue(){
 		double[] aDistance = RobotMap.aDistance;
-		 xcelx = RobotMap.accelX;
-		    xcely = RobotMap.accelY;
-		    Y= 0; YdistancePrev= 0; XdistancePrev= 0; X= 0;
-		    Xvelocity= 0; XvelocityPrev= 0; Yvelocity= 0; YvelocityPrev= 0;
-		    timePrev= 0; timeCurrent= 0;
-		    
-	   
-	    	
+
 	    	  //Set previous values
 	        timePrev = timeCurrent;
 	        XdistancePrev = X;
@@ -58,13 +51,24 @@ public class GetLocationTrue extends Subsystem {
 	        aDistance[1] = Yvelocity * timeDelta + YdistancePrev;
 	        SmartDashboard.putNumber("The current Y-axis acceleration is ", xcely);
 	        SmartDashboard.putNumber("The current X-axis acceleration is " , xcelx);
-	        SmartDashboard.putNumber("The current X-axis distance is " , X);
-	        SmartDashboard.putNumber("The current Y-axis distance is " , Y);
+	        SmartDashboard.putNumber("The current X-axis distance is " , aDistance[0]);
+	        SmartDashboard.putNumber("The current Y-axis distance is " , aDistance[1]);
+	}
+	public void initVariables(){
+		 xcelx = RobotMap.accelX;
+		    xcely = RobotMap.accelY;
+		    Y= 0; YdistancePrev= 0; XdistancePrev= 0; X= 0;
+		    Xvelocity= 0; XvelocityPrev= 0; Yvelocity= 0; YvelocityPrev= 0;
+		    timePrev= 0; timeCurrent= 0;	
 	}
 
 	@Override
 	protected void initDefaultCommand() {
-		
+		 xcelx = RobotMap.accelX;
+		    xcely = RobotMap.accelY;
+		    Y= 0; YdistancePrev= 0; XdistancePrev= 0; X= 0;
+		    Xvelocity= 0; XvelocityPrev= 0; Yvelocity= 0; YvelocityPrev= 0;
+		    timePrev= 0; timeCurrent= 0;		
 	}
 
 }

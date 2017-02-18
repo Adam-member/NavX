@@ -14,6 +14,7 @@ import org.usfirst.frc.team2557.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.GetLocationTrue;
 import org.usfirst.frc.team2557.robot.subsystems.NavX;
 import org.usfirst.frc.team2557.robot.commands.InterpretAcceleration;
+import org.usfirst.frc.team2557.robot.commands.InitVariables;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,6 +34,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	Command FindAcceleration;
 	Command InterpretAcceleration;
+	Command InitVariables;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
@@ -48,6 +50,7 @@ public class Robot extends IterativeRobot {
 		
 		FindAcceleration = new FindAcceleration();
 		InterpretAcceleration = new InterpretAcceleration();
+		InitVariables = new InitVariables();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
@@ -105,6 +108,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
+		InitVariables.start();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
