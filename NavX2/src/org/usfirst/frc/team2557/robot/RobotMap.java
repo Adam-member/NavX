@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.Timer;
  * floating around.
  */
 public class RobotMap {
-	public static AHRS ahrs;
+	public static AHRS  ahrs;
 	
 	public static float accelX;
 	public static float accelY;
