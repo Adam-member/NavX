@@ -28,6 +28,10 @@ public class RobotMap {
 		time = new Timer();
 		
 		aDistance = new double[2];
+		
+		aDistance[0] = aDistance[1] = 0.0;
+		accelX = accelY = (float) 0.0;
+		
 	}
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.

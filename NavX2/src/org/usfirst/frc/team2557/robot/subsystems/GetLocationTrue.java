@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class GetLocationTrue extends Subsystem {
+	
 	public double xcelx;
 	public double xcely;
 	public double X;
@@ -24,9 +25,17 @@ public class GetLocationTrue extends Subsystem {
 	public double timeCurrent;
 	public double timeDelta;
 
+	public GetLocationTrue() {
+		xcelx = 0;
+		xcely = 0;
+		Y= 0; YdistancePrev= 0; XdistancePrev= 0; X= 0;
+		Xvelocity= 0; XvelocityPrev= 0; Yvelocity= 0; YvelocityPrev= 0;
+		timePrev= 0; timeCurrent= 0;
+	}
+	
 	public void setPrevVariables(){
 	 	  //Set previous values
-        timePrev = timeCurrent;
+//        timePrev = timeCurrent;
         XdistancePrev = X;
         YdistancePrev = Y;
         XvelocityPrev = Xvelocity;
@@ -35,6 +44,9 @@ public class GetLocationTrue extends Subsystem {
 	public void getLocationTrue(){
 		double[] aDistance = RobotMap.aDistance;
 
+        xcelx = RobotMap.accelX;
+        xcely = RobotMap.accelY;
+        
 	    	  //Set previous values
 //	        timePrev = timeCurrent;
 //	        XdistancePrev = X;
@@ -49,6 +61,7 @@ public class GetLocationTrue extends Subsystem {
 	        //Get current time
 	        timeCurrent = RobotMap.time.get();
 	        timeDelta = timeCurrent - timePrev;
+	        timePrev = timeCurrent;
 	        
 	        //Calculate current velocity
 	        Xvelocity = xcelx * timeDelta + XvelocityPrev;
@@ -64,21 +77,14 @@ public class GetLocationTrue extends Subsystem {
 	        SmartDashboard.putNumber("The current X-axis distance is " , aDistance[0]);
 	        SmartDashboard.putNumber("The current Y-axis distance is " , aDistance[1]);
 	}
+	
 	public void initVariables(){
-		 xcelx = RobotMap.accelX;
-		    xcely = RobotMap.accelY;
-		    Y= 0; YdistancePrev= 0; XdistancePrev= 0; X= 0;
-		    Xvelocity= 0; XvelocityPrev= 0; Yvelocity= 0; YvelocityPrev= 0;
-		    timePrev= 0; timeCurrent= 0;	
 	}
 
 	@Override
 	protected void initDefaultCommand() {
-		 xcelx = RobotMap.accelX;
-		    xcely = RobotMap.accelY;
-		    Y= 0; YdistancePrev= 0; XdistancePrev= 0; X= 0;
-		    Xvelocity= 0; XvelocityPrev= 0; Yvelocity= 0; YvelocityPrev= 0;
-		    timePrev= 0; timeCurrent= 0;		
+//        xcelx = RobotMap.accelX;
+//        xcely = RobotMap.accelY;
 	}
 
 }
