@@ -14,8 +14,8 @@ import edu.wpi.first.wpilibj.Timer;
 public class RobotMap {
 	public static AHRS  ahrs;
 	
-	public static float accelX;
-	public static float accelY;
+	public static double accelX;
+	public static double accelY;
 
 	public static double[] aDistance;
 	
@@ -30,7 +30,7 @@ public class RobotMap {
 		aDistance = new double[2];
 		
 		aDistance[0] = aDistance[1] = 0.0;
-		accelX = accelY = (float) 0.0;
+		accelX = accelY = 0.0;
 		
 	}
 	// For example to map the left and right motors, you could define the
